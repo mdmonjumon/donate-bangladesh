@@ -6,16 +6,82 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Donate Bangladesh</title>
 
+    <!-- font family -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+
     <!-- tailwind and daisyUI cdn -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.14/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        clifford: '#da373d',
+                        'primary-btn': '#B4F461',
+                        'primary-text': '#111111b3',
+                        'primary-bg': '#1111110D',
+                    },
+                    fontFamily: {
+                        'lexend-font': '"Lexend", "sans-serif"',
+                    }
+                }
+            }
+        }
+    </script>
 </head>
 
-<body>
+<body class="font-lexend-font">
+    <header class="max-w-screen-2xl mx-auto">
+        <nav class="flex justify-around bg-[#F9F7F3] pt-6 pb-14">
+            <div>
+                <button class="btn bg-primary-btn font-semibold text-xl">Blog</button>
+            </div>
+            <div class="flex items-center gap-4">
+                <div>
+                    <img src="./assets/logo.png" alt="logo">
+                </div>
+                <div>
+                    <h1 class="font-semibold text-xl">Donate Bangladesh</h1>
+                </div>
+            </div>
+            <div class="flex items-center gap-3 font-semibold text-xl text-primary-text">
+                <img src="./assets/coin.png" alt="">
+                <span>0</span>
+                <p>BDT</p>
+            </div>
+        </nav>
+        <div class="flex justify-center my-10">
+            <button class="bg-primary-btn font-semibold text-xl px-6 py-4 border rounded-lg mr-4">Donation</button>
+            <button class="font-semibold text-xl px-6 py-4 border rounded-lg text-primary-text">History</button>
+        </div>
+    </header>
 
+    <main class="max-w-screen-xl">
+        <section class="noakhali-section">
+            <div>
+                <img src="./assets/noakhali.png" alt="noakhali">
+            </div>
+            <div>
+                <div class="flex gap-2 items-center text-primary-text font-normal text-base py-3 px-5 w-max rounded-lg bg-primary-bg">
+                    <img src="./assets/coin.png" alt="coin">
+                    <span>0</span>
+                    <p>BDT</p>
+                </div>
+            </div>
 
+        </section>
 
-<script src="./js/donate-bangladesh.js"></script>
+    </main>
+
+    <footer>
+
+    </footer>
+
+    <script src="./js/donate-bangladesh.js"></script>
 </body>
 
 </html>
