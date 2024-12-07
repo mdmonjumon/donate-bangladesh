@@ -67,7 +67,7 @@ getElement('noakhali-donate-btn').addEventListener('click', function () {
             </div>
             
     `
-getElement('history-container').innerHTML += historyRow;
+    getElement('history-container').innerHTML += historyRow;
 });
 
 // Donate for Flood Relief in Feni,Bangladesh
@@ -94,10 +94,43 @@ getElement('feni-btn').addEventListener('click', function () {
     });
     const historyRow = `
     <div class="border rounded-2xl p-8 space-y-4">
-                <h3 class="text-xl font-bold">${feniInputvalue} Taka is Donated for Flood at Noakhali, Bangladesh</h3>
+                <h3 class="text-xl font-bold">${feniInputvalue} Taka is Donated for Flood Relief in Feni,Bangladesh</h3>
                 <p class="font-light text-base text-primary-text">Date : ${new Date()}</p>
             </div>
             
     `
-getElement('history-container').innerHTML += historyRow;
+    getElement('history-container').innerHTML += historyRow;
+});
+
+
+// Donate for Quota fighter of,Bangladesh
+getElement('quota-btn').addEventListener('click', function () {
+    const quotaInputvalue = getValueById('quota-input');
+    const totalDonateQuota = getInnerTextById('total-donate-quota');
+    const totalDonateQuotaNumber = parseFloat(totalDonateQuota);
+    let balance = parseFloat(getInnerTextById('balance'));
+    if (quotaInputvalue < 0 || isNaN(quotaInputvalue)) {
+        alert('Invalid Donation Amount');
+        return;
+    }
+    if (balance < quotaInputvalue) {
+        alert('Insufficient Balance');
+        return;
+    }
+    const total = totalDonateQuotaNumber + quotaInputvalue;
+    getElement('total-donate-quota').innerText = total;
+    balance = balance - quotaInputvalue;
+    getElement('balance').innerText = balance;
+    getElement('successful-modal').classList.remove('hidden');
+    getElement('successful-modal-close').addEventListener('click', function () {
+        getElement('successful-modal').classList.add('hidden');
+    });
+    const historyRow = `
+    <div class="border rounded-2xl p-8 space-y-4">
+                <h3 class="text-xl font-bold">${quotaInputvalue} Taka is Donated for Quota fighter of,Bangladesh</h3>
+                <p class="font-light text-base text-primary-text">Date : ${new Date()}</p>
+            </div>
+            
+    `
+    getElement('history-container').innerHTML += historyRow;
 });
