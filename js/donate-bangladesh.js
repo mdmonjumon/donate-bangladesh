@@ -69,3 +69,35 @@ getElement('noakhali-donate-btn').addEventListener('click', function () {
     `
 getElement('history-container').innerHTML += historyRow;
 });
+
+// Donate for Flood Relief in Feni,Bangladesh
+getElement('feni-btn').addEventListener('click', function () {
+    const feniInputvalue = getValueById('feni-input');
+    const totalDonateFeni = getInnerTextById('total-donate-feni');
+    const totalDonateFeniNumber = parseFloat(totalDonateFeni);
+    let balance = parseFloat(getInnerTextById('balance'));
+    if (feniInputvalue < 0 || isNaN(feniInputvalue)) {
+        alert('Invalid Donation Amount');
+        return;
+    }
+    if (balance < feniInputvalue) {
+        alert('Insufficient Balance');
+        return;
+    }
+    const total = totalDonateFeniNumber + feniInputvalue;
+    getElement('total-donate-feni').innerText = total;
+    balance = balance - feniInputvalue;
+    getElement('balance').innerText = balance;
+    getElement('successful-modal').classList.remove('hidden');
+    getElement('successful-modal-close').addEventListener('click', function () {
+        getElement('successful-modal').classList.add('hidden');
+    });
+    const historyRow = `
+    <div class="border rounded-2xl p-8 space-y-4">
+                <h3 class="text-xl font-bold">${feniInputvalue} Taka is Donated for Flood at Noakhali, Bangladesh</h3>
+                <p class="font-light text-base text-primary-text">Date : ${new Date()}</p>
+            </div>
+            
+    `
+getElement('history-container').innerHTML += historyRow;
+});
