@@ -1,10 +1,18 @@
 window.addEventListener('scroll', function () {
-    // const header = document.getElementById('header-container');
-    // header.classList.add('border');
-    // header.classList.add('rounded-2xl');
-    // header.classList.add('bg-white/90');
-    // const nav = document.getElementById('nav-container');
-    // nav.classList.remove('bg-[#F9F7F3]');
+    if (document.documentElement.scrollTop > 50) {
+        const header = document.getElementById('header-container');
+        header.classList.add('border');
+        header.classList.add('rounded-2xl');
+        header.classList.add('bg-white/90');
+        const nav = document.getElementById('nav-container');
+        nav.classList.remove('bg-[#F9F7F3]');
+    }
+    else {
+        const header = document.getElementById('header-container');
+        header.classList.remove('border');
+        const nav = document.getElementById('nav-container');
+        nav.classList.add('bg-[#F9F7F3]');
+    }
 });
 
 //blog button
