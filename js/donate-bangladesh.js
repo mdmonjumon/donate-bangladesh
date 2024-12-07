@@ -1,4 +1,4 @@
-window.addEventListener('scroll', function(){
+window.addEventListener('scroll', function () {
     // const header = document.getElementById('header-container');
     // header.classList.add('border');
     // header.classList.add('rounded-2xl');
@@ -8,12 +8,12 @@ window.addEventListener('scroll', function(){
 });
 
 //blog button
-document.getElementById('blog').addEventListener('click', function(){
+document.getElementById('blog').addEventListener('click', function () {
     window.location.href = './blog.html';
 });
 
 // Donation button
-document.getElementById('donation-btn').addEventListener('click', function(){
+document.getElementById('donation-btn').addEventListener('click', function () {
     const historyButton = getElement('history-btn');
     historyButton.classList.remove('bg-primary-btn');
     const historyContainer = getElement('history-container');
@@ -22,11 +22,11 @@ document.getElementById('donation-btn').addEventListener('click', function(){
     infoContainer.classList.remove('hidden');
     const donationButton = getElement('donation-btn');
     donationButton.classList.add('bg-primary-btn');
-    
+
 });
 
 // History button
-document.getElementById('history-btn').addEventListener('click', function(){
+document.getElementById('history-btn').addEventListener('click', function () {
     const historyButton = getElement('history-btn');
     historyButton.classList.add('bg-primary-btn');
     const historyContainer = getElement('history-container');
@@ -39,24 +39,33 @@ document.getElementById('history-btn').addEventListener('click', function(){
 
 
 // Donate for Flood at Noakhali, Bangladesh
-// document.getElementById('noakhali-donate-btn').addEventListener
-getElement('noakhali-donate-btn').addEventListener('click', function(){
+getElement('noakhali-donate-btn').addEventListener('click', function () {
     const noakhaliInputvalue = getValueById('noakhali-input');
     const totalDonateNoakhali = getInnerTextById('total-donate-noakhali');
     const totalDonateNoakhaliNumber = parseFloat(totalDonateNoakhali);
     let balance = parseFloat(getInnerTextById('balance'));
-    if(noakhaliInputvalue < 0 || isNaN(noakhaliInputvalue)){
+    if (noakhaliInputvalue < 0 || isNaN(noakhaliInputvalue)) {
         alert('Invalid Donation Amount');
         return;
     }
-    if(balance < noakhaliInputvalue){
+    if (balance < noakhaliInputvalue) {
         alert('Insufficient Balance');
         return;
     }
-    const total= totalDonateNoakhaliNumber + noakhaliInputvalue;
+    const total = totalDonateNoakhaliNumber + noakhaliInputvalue;
     getElement('total-donate-noakhali').innerText = total;
     balance = balance - noakhaliInputvalue;
     getElement('balance').innerText = balance;
-
-    
-})
+    getElement('successful-modal').classList.remove('hidden');
+    getElement('successful-modal-close').addEventListener('click', function () {
+        getElement('successful-modal').classList.add('hidden');
+    });
+    const historyRow = `
+    <div class="border rounded-2xl p-8 space-y-4">
+                <h3 class="text-xl font-bold">${noakhaliInputvalue} Taka is Donated for Flood at Noakhali, Bangladesh</h3>
+                <p class="font-light text-base text-primary-text">Date : ${new Date()}</p>
+            </div>
+            
+    `
+getElement('history-container').innerHTML += historyRow;
+});
